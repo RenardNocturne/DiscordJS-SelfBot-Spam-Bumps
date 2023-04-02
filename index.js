@@ -1,0 +1,27 @@
+const { Client } = require('discord.js-selfbot-v13');
+const { loadEvents } = require('./Utils/loader.js')
+
+console.log(`
+      ______                                                        
+    /       \\                                                       
+    /$$$$$$  |  ______    ______   _____  ____    ______    ______  
+    $$ \\__$$/  /      \\  /      \\ /     \\/    \\  /      \\  /      \\ 
+    $$      \\ /$$$$$$  | $$$$$$  |$$$$$$ $$$$  |/$$$$$$  |/$$$$$$  |
+    $$$$$$  | $$ |  $$ | /    $$ |$$ | $$ | $$ |$$    $$ |$$ |  $$/ 
+    /  \\__$$| $$ |__$$ |/$$$$$$$ |$$ | $$ | $$ |$$$$$$$$/ $$ |      
+    $$    $$/ $$    $$/ $$    $$ |$$ | $$ | $$ |$$       |$$ |      
+     $$$$$$/  $$$$$$$/   $$$$$$$/ $$/  $$/  $$/  $$$$$$$/ $$/       
+              $$ |                                                  
+              $$ |                                                  
+              $$/                                                     
+
+By RenardNocturne \n\n`);
+
+const userClient = new Client({checkUpdate: false});
+
+userClient.config = require("./config.js")
+require('./Utils/functions')(userClient);
+loadEvents(userClient);
+
+userClient.login(userClient.config.TOKEN).catch(err => console.error("❌ I can't log in ! Have you forgot to run node .\\init.js ? Have you provided a valid token ?"))
+      

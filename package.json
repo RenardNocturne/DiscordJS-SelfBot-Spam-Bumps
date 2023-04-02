@@ -1,0 +1,35 @@
+{
+  "name": "@renardnocturne/discord-selfbot-spam-pub",
+  "version": "1.0.0",
+  "description": "A simplified selfbot for Discord that allows you to spam your ads/publicity in several channels !",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RenardNocturne/Discord-SelfBot-Spam-Pub.git"
+  },
+  "author": "RenardNocturne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RenardNocturne/Discord-SelfBot-Spam-Pub/issues"
+  },
+  "homepage": "https://github.com/RenardNocturne/Discord-SelfBot-Spam-Pub#readme",
+  "dependencies": {
+    "discord.js-selfbot-v13": "^2.13.0",
+    "fs": "^0.0.1-security",
+    "inquirer": "^8.2.1"
+  },
+  "keywords": [
+    "selfbot",
+    "advertise",
+    "discord",
+    "spam",
+    "publicity",
+    "ads",
+    "commands",
+    "bump"
+  ]
+}
