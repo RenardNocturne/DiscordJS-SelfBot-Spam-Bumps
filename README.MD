@@ -36,9 +36,9 @@ What you have to do is only to **follow the [Instructions](#instructions)** and 
 
 ## 🎉 Enjoy ! <a name="enjoy">
 Now, you should see something like that in your `cmd`:
-![Result Image](https://github.com/RenardNocturne/Discord-SelfBot-Spam-Bumps/blob/master/Images/Result.jpg?raw=true)
+![Result Image](https://github.com/RenardNocturne/DiscordJS-SelfBot-Spam-Bumps/blob/main/Images/Result.jpg?raw=true)
 
 > If you don't, please [open an issue](https://github.com/RenardNocturne/Discord-SelfBot-Spam-Bumps/issues) !<br>
-> If you want to send your ad faster please change the values in the [pickRandomNumberBetweenTwoNumbers function](https://github.com/RenardNocturne/Discord-SelfBot-Spam-Bumps/blob/master/Events/Commands/spamCommands.js) !<br>
+> If you want to send your ad faster please change the values in the [pickRandomNumberBetweenTwoNumbers function](https://github.com/RenardNocturne/DiscordJS-SelfBot-Spam-Bumps/blob/main/Events/Commands/spamCommands.js) !<br>
 > If you've noticed a mistake in my English please let me know because, yes, I'm French 👋 !<br>
 > Finally, if you liked this project, please let a star 😋 !
