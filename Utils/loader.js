@@ -26,7 +26,7 @@ const loadData = async () => {
         {
             type: 'input',
             name: 'SLASHCOMMANDS',
-            message: 'Please, enter a bot id and his slash command, you can change it later in the data.json file located in the Data folder: <botID> - <slashCommandName> / <anotherBotID> - <anotherSlashCommandName> \n',
+            message: 'Please, enter a bot id and his slash command, you can change it later in the data.json file located in the Data folder: <botID> - <slashCommandName> - <delayInMinutes> / <anotherBotID> - <anotherSlashCommandName> - <anotherDelayInMinutes> \n',
         },
         {
             type: 'input',
@@ -39,19 +39,21 @@ const loadData = async () => {
             let largeScheme = '';
             data.forEach(couple => {
                 const elements = couple.split(" - ") // ["botid", "command"]
-                const objScheme = `{"BOTID": "${elements[0]}", "COMMAND":"${elements[1]}"}${elements[1] !== data[data.length - 1].split(" - ")[1] || elements[0] !== data[data.length - 1].split(" - ")[0] ? ',' : ''}` // If it's not the last one, he has a ","
-                largeScheme += objScheme // '{"BOTID: "ID", "COMMAND": "slashCommandName"}, ...}'
+                const objScheme = `{"BOTID": "${elements[0]}", "COMMAND":"${elements[1]}", "DELAY": ${elements[2]}}${elements[1] !== data[data.length - 1].split(" - ")[1] || elements[0] !== data[data.length - 1].split(" - ")[0] ? ',' : ''}` // If it's not the last one, it has a ","
+                largeScheme += objScheme // '{"BOTID: "ID", "COMMAND": "slashCommandName", "DELAY" : "someDelayInMinutes"}, ...}'
             });
             return JSON.parse('[' + largeScheme + ']') 
             /*
                 [
                     {
                     "BOTID" : "12345678910",
-                    "COMMAND" : "bump"
+                    "COMMAND" : "bump",
+                    "DELAY" : 125
                     },
                     {
                         "BOTID: "145678656",
-                        "COMMAND": "bump"
+                        "COMMAND": "bump",
+                        "DELAY": 30
                     }
                 ]
             */
@@ -60,7 +62,6 @@ const loadData = async () => {
             TOKEN: res.TOKEN,
             SLASHCOMMANDS: createSlashCommandsData(res.SLASHCOMMANDS.split(" / ")),
             CHANNELS: res.CHANNELS.split(" "),
-            REPLYING: []  //It will be use later
         }
         console.log(data)
         dataString = `module.exports = ${JSON.stringify(data)}`

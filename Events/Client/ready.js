@@ -9,14 +9,12 @@ module.exports = async (client) => {
   //Step one: Get slowmodes per channel
   for (channelID of client.config.CHANNELS) {
     channel = client.channels.cache.get(channelID) //Get the channel
-
-    channel.sendTyping().then(() => { //Starts typing and then sends the command
+    
       client.config.SLASHCOMMANDS.forEach(slashCommand => { 
         channel.sendSlash(slashCommand.BOTID, slashCommand.COMMAND) //Sending all /commands in the channels chosen
         .then(() => console.log(`✅ Sent /${slashCommand.COMMAND} to ${channel.name} from the bot with the ID ${slashCommand.BOTID} !`))
         .catch(err => console.log(`❌ I can't send /${slashCommand.COMMAND} to ${channel.name}: from the bot with the ID ${slashCommand.BOTID} !`, err))
       });
-    })
 
     client.emit("spamCommands", channel) 
   }
