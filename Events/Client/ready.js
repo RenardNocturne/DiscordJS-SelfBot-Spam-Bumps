@@ -12,7 +12,17 @@ module.exports = async (client) => {
     
       client.config.SLASHCOMMANDS.forEach(slashCommand => { 
         channel.sendSlash(slashCommand.BOTID, slashCommand.COMMAND) //Sending all /commands in the channels chosen
-        .then(() => console.log(`✅ Sent /${slashCommand.COMMAND} to ${channel.name} from the bot with the ID ${slashCommand.BOTID} !`))
+        .then(() => {
+          filter = m => m.content.startsWith("Please answer the question below:") //Spot the captcha message
+          channel.awaitMessages({filter, max: 1})
+          .then(msg => {
+            captcha = eval(msg.first().content.split(":")[1].replace("x", "*")) //Solves the captcha
+            setTimeout(() => {
+              msg.first().components[0].components.find(button => button.label == captcha).click()
+            }, client.pickRandomNumberBetweenTwoNumbers(0.1, 0.4))
+          })
+          console.log(`✅ Sent /${slashCommand.COMMAND} to ${channel.name} from the bot with the ID ${slashCommand.BOTID} !`)
+        })
         .catch(err => console.log(`❌ I can't send /${slashCommand.COMMAND} to ${channel.name}: from the bot with the ID ${slashCommand.BOTID} !`, err))
       });
 
