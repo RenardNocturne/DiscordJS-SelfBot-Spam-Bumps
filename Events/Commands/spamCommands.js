@@ -12,10 +12,11 @@ module.exports = (client, channel) => {
                 filter = m => m.content.startsWith("Please answer the question below:") //Spot the captcha message
                 channel.awaitMessages({filter, max: 1})
                 .then(msg => {
-                    captcha = eval(msg.first().content.split(":")[1].replace("x", "*")) //Solves the captcha
+                    captcha = eval(msg.first().content.split(":")[1].replaceAll("x", "*")) //Solves the captcha
                     setTimeout(() => {
-                    msg.first().components[0].components.find(button => button.label == captcha).click()
-                    }, client.pickRandomNumberBetweenTwoNumbers(0.1, 0.4))
+                    answer = msg.first().components[0].components.find(button => button.label == captcha).customId
+                    msg.first().clickButton(answer)
+                    }, 5*1000)
                 })
                 console.log(`✅ Sent /${slashCommand.COMMAND} to ${channel.name} from the bot with the ID ${slashCommand.BOTID} !`)
             })
