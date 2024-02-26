@@ -16,6 +16,8 @@ module.exports = (client, channel) => {
                     setTimeout(() => {
                     answer = msg.first().components[0].components.find(button => button.label == captcha).customId
                     msg.first().clickButton(answer)
+                    .then(() => console.log(`✅ Counter captcha on /${slashCommand.COMMAND} command from the bot ${slashCommand.BOTID}.`))
+                    .catch(e => null)
                     }, 5*1000)
                 })
                 console.log(`✅ Sent /${slashCommand.COMMAND} to ${channel.name} from the bot with the ID ${slashCommand.BOTID} !`)
